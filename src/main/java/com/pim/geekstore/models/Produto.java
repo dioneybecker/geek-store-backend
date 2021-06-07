@@ -1,6 +1,7 @@
 package com.pim.geekstore.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -23,9 +24,17 @@ public class Produto {
     @Column(length=1024)
     private String imageUrl;
 
+    @ManyToMany(mappedBy = "produtos")
+    private List<Pedido> pedidos;
 
-    @ManyToOne
-    private Pedido pedido;
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -35,9 +44,7 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Pedido getPedido() {
-        return pedido;
-    }
+
 
     public String getImageUrl() {
         return imageUrl;
@@ -47,9 +54,7 @@ public class Produto {
         this.imageUrl = imageUrl;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
-    }
+
 
     public long getId() {
         return id;

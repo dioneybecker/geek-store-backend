@@ -17,9 +17,10 @@ public class Pedido {
     private String status;
 
     @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    @OneToMany
+    @ManyToMany
     private List<Produto> produtos;
 
     public long getId() {

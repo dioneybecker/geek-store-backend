@@ -21,6 +21,7 @@ public class Cliente {
     private String email;
 
     @OneToMany
+    @JoinColumn(name = "cliente_id")
     private List<Pedido> pedidos;
 
     public List<Pedido> getPedidos() {
