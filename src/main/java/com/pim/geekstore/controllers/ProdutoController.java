@@ -2,6 +2,7 @@ package com.pim.geekstore.controllers;
 
 import com.pim.geekstore.models.Produto;
 import com.pim.geekstore.repositories.ProdutoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,11 +13,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/produto")
 @CrossOrigin
 public class ProdutoController {
+
+    @Autowired
     private ProdutoRepository produtoRepository;
 
-    public ProdutoController(ProdutoRepository produtoRepository) {
+    /*public ProdutoController(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
-    }
+    }*/
 
     @PutMapping("/{id}")
     public ResponseEntity<Produto> atualizarProduto(@PathVariable("id") long id, @RequestBody Produto novoProduto) {
